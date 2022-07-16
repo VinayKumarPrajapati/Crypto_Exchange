@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@sanity/client": "^3.3.2",
+    "@sanity/image-url": "^1.0.1"
+  }
+}
