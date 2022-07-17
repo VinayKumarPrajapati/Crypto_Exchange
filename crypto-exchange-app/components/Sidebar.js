@@ -1,15 +1,18 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import BBLogo from "../assets/brobillionaire-logos_white.png";
+import BBLogo from "../assets/bb-logo.png";
 import Image from "next/image";
+
 import { navItems } from "../static/navItems";
 
 const Sidebar = () => {
+	const [activeIcon, setActiveIcon] = useState(navItems[0].title);
+
 	return (
 		<Wrapper>
 			<LogoContainer>
 				<Logo>
-					<Image src={BBLogo} alt="Logo"></Image>
+					<Image src={BBLogo} alt="Bro Billionaire Logo" />
 				</Logo>
 			</LogoContainer>
 			<NavItemsContainer>
@@ -35,7 +38,6 @@ const Wrapper = styled.div`
 	/* TRouBLe */
 	padding: 0 1rem;
 `;
-
 const LogoContainer = styled.div`
 	/* TRouBLe */
 	margin: 1.5rem 0;
@@ -45,6 +47,13 @@ const Logo = styled.div`
 	width: 44%;
 	object-fit: contain;
 	margin-left: 1.5rem;
+`;
+
+const NavItemsContainer = styled.div`
+	margin-top: 3rem;
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 const NavItem = styled.div`

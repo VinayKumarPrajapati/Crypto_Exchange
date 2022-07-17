@@ -2506,6 +2506,11 @@ chalk@^4.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
+chart.js@^3.8.0:
+  version "3.8.0"
+  resolved "https://registry.npmjs.org/chart.js/-/chart.js-3.8.0.tgz"
+  integrity sha512-cr8xhrXjLIXVLOBZPkBZVF6NDeiVIrPLHcMhnON7UufudL+CNeRrD+wpYanswlm8NpudMdrt3CHoLMQMxJhHRg==
+
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
   resolved "https://registry.npmjs.org/cipher-base/-/cipher-base-1.0.4.tgz"
@@ -3253,6 +3258,42 @@ ethereumjs-util@^7.1.0:
 ethers@^5.5.2:
   version "5.6.9"
   resolved "https://registry.npmjs.org/ethers/-/ethers-5.6.9.tgz"
+  integrity sha512-lMGC2zv9HC5EC+8r429WaWu3uWJUCgUCt8xxKCFqkrFuBDZXDYIdzDUECxzjf2BMF8IVBByY1EBoGSL3RTm8RA==
+  dependencies:
+    "@ethersproject/abi" "5.6.4"
+    "@ethersproject/abstract-provider" "5.6.1"
+    "@ethersproject/abstract-signer" "5.6.2"
+    "@ethersproject/address" "5.6.1"
+    "@ethersproject/base64" "5.6.1"
+    "@ethersproject/basex" "5.6.1"
+    "@ethersproject/bignumber" "5.6.2"
+    "@ethersproject/bytes" "5.6.1"
+    "@ethersproject/constants" "5.6.1"
+    "@ethersproject/contracts" "5.6.2"
+    "@ethersproject/hash" "5.6.1"
+    "@ethersproject/hdnode" "5.6.2"
+    "@ethersproject/json-wallets" "5.6.1"
+    "@ethersproject/keccak256" "5.6.1"
+    "@ethersproject/logger" "5.6.0"
+    "@ethersproject/networks" "5.6.4"
+    "@ethersproject/pbkdf2" "5.6.1"
+    "@ethersproject/properties" "5.6.0"
+    "@ethersproject/providers" "5.6.8"
+    "@ethersproject/random" "5.6.1"
+    "@ethersproject/rlp" "5.6.1"
+    "@ethersproject/sha2" "5.6.1"
+    "@ethersproject/signing-key" "5.6.2"
+    "@ethersproject/solidity" "5.6.1"
+    "@ethersproject/strings" "5.6.1"
+    "@ethersproject/transactions" "5.6.2"
+    "@ethersproject/units" "5.6.1"
+    "@ethersproject/wallet" "5.6.2"
+    "@ethersproject/web" "5.6.1"
+    "@ethersproject/wordlists" "5.6.1"
+
+ethers@^5.6.9:
+  version "5.6.9"
+  resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.6.9.tgz#4e12f8dfcb67b88ae7a78a9519b384c23c576a4d"
   integrity sha512-lMGC2zv9HC5EC+8r429WaWu3uWJUCgUCt8xxKCFqkrFuBDZXDYIdzDUECxzjf2BMF8IVBByY1EBoGSL3RTm8RA==
   dependencies:
     "@ethersproject/abi" "5.6.4"
@@ -4681,6 +4722,11 @@ randombytes@^2.1.0:
   dependencies:
     safe-buffer "^5.1.0"
 
+react-chartjs-2@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-4.3.1.tgz"
+  integrity sha512-5i3mjP6tU7QSn0jvb8I4hudTzHJqS8l00ORJnVwI2sYu0ihpj83Lv2YzfxunfxTZkscKvZu2F2w9LkwNBhj6xA==
+
 react-clientside-effect@^1.2.5:
   version "1.2.6"
   resolved "https://registry.npmjs.org/react-clientside-effect/-/react-clientside-effect-1.2.6.tgz"
@@ -4713,14 +4759,9 @@ react-focus-lock@2.5.2:
     use-callback-ref "^1.2.5"
     use-sidecar "^1.0.5"
 
-react-icons@^4.3.1:
+react-icons@^4.3.1, react-icons@^4.4.0:
   version "4.4.0"
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.4.0.tgz"
-  integrity sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==
-
-react-icons@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.4.0.tgz#a13a8a20c254854e1ec9aecef28a95cdf24ef703"
   integrity sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==
 
 react-is@^16.13.1, react-is@^16.7.0:
