@@ -1,11 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import Porfolio from "./Porfolio";
+import Promos from "./Promos";
 
-export const Main = () => {
+export const Main = ({ thirdWebTokens, sanityTokens, walletAddress }) => {
 	return (
 		<Wrapper>
-			<Porfolio />
+			<Porfolio
+				thirdWebTokens={thirdWebTokens}
+				sanityTokens={sanityTokens}
+				walletAddress={walletAddress}
+			/>
+			<Promos />
 		</Wrapper>
 	);
 };

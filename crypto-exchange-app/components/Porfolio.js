@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { coins } from "../static/coins";
@@ -7,30 +7,10 @@ import BalanceChart from "./BalanceChart";
 import { ThirdWebSDK } from "@3rdweb/sdk";
 import { ethers } from "ethers";
 
-const sdk = new ThirdWebSDK(
-	new ethers.Wallet(
-		process.env.NEXT_PUBLIC_METAMASK_KEY,
-		ethers.getDefaultProvider("https://rinkeby.infura.io/v3/")
-	)
-);
-
-const Porfolio = () => {
-	const [sanityTokens, setSanityTokens] = useState([]);
-	const [thirdWebTokens, setThirdWebTokens] = useState([]);
-	useEffect(() => {
-		const getSanityAndThirdWebTokens = async () => {
-			const coins = await fetch(
-				"https://8el3awf8.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%27coins%27%5D%20%7B%0A%20%20name%2C%0A%20%20usdPrice%2C%0A%20%20contractAddress%2C%0A%20%20symbol%2C%0A%20%20logo%0A%7D"
-			);
-			const tempSanityTokens = await coins.json();
-			setSanityTokens(tempSanityTokens);
-
-			setThirdWebToken(
-				sanityTokens.map((token) => sdk.getTokenModule(token.contractAddress))
-			);
-		};
-		return getSanityAndThirdWebTokens();
-	}, []);
+const Porfolio = ({ thirdWebTokens, sanityTokens, walletAddress }) => {
+	// thirdWebTokens[0]
+	// 	.balanceOf(walletAddress)
+	// 	.then((balance) => console.log(Number(balance.displayValue) * 3100));
 	return (
 		<Wrapper>
 			{" "}
