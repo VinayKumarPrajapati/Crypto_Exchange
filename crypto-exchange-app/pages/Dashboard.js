@@ -5,7 +5,6 @@ import { Main } from "../components/Main";
 import Sidebar from "../components/Sidebar";
 import { ThirdwebSDK } from "@3rdweb/sdk";
 import { ethers } from "ethers";
-require("dotenv").config();
 
 const Dashboard = ({ address }) => {
 	const [sanityTokens, setSanityTokens] = useState([]);
@@ -30,7 +29,7 @@ const Dashboard = ({ address }) => {
 		if (sanityTokens) {
 			const sdk = new ThirdwebSDK(
 				new ethers.Wallet(
-					process.env.NEXT_PUBLIC_PRIVATE_KEY,
+					process.env.NEXT_PUBLIC_METAMASK_KEY,
 					ethers.getDefaultProvider("https://rinkeby.infura.io/v3")
 				)
 			);
@@ -48,14 +47,14 @@ const Dashboard = ({ address }) => {
 			<Sidebar />
 			<MainContainer>
 				<Header
-					walletAddress={address}
-					sanityTokens={sanityTokens}
 					thirdWebTokens={thirdWebTokens}
+					sanityTokens={sanityTokens}
+					walletAddress={address}
 				/>
 				<Main
-					walletAddress={address}
-					sanityTokens={sanityTokens}
 					thirdWebTokens={thirdWebTokens}
+					sanityTokens={sanityTokens}
+					walletAddress={address}
 				/>
 			</MainContainer>
 		</Wrapper>

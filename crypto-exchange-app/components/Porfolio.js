@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { coins } from "../static/coins";
@@ -8,12 +8,35 @@ import { ThirdWebSDK } from "@3rdweb/sdk";
 import { ethers } from "ethers";
 
 const Porfolio = ({ thirdWebTokens, sanityTokens, walletAddress }) => {
-	// thirdWebTokens[0]
-	// 	.balanceOf(walletAddress)
-	// 	.then((balance) => console.log(Number(balance.displayValue) * 3100));
+	const [walletBalance, setWalletBalance] = useState(0);
+	const [sender] = useState(walletAddress);
+
+	const getBalance = async (activeTwToken) => {
+		const balance = await activeTwToken.balanceOf(sender);
+
+		return parseInt(balance.displayValue);
+	};
+
+	useEffect(() => {
+		const calculateTotalBalance = async () => {
+			setWalletBalance(0);
+
+			sanityTokens.map(async (token) => {
+				const currentThirdwebToken = twTokens.filter(
+					(twToken) => twToken.address === token.contractAddress
+				);
+
+				const balance = await getBalance(currentThirdwebToken[0]);
+				setWalletBalance((prevState) => prevState + balance * token.usdPrice);
+			});
+		};
+
+		if (sanityTokens.length > 0 && thirdWebTokens.length > 0) {
+			calculateTotalBalance();
+		}
+	}, [thirdWebTokens, sanityTokens]);
 	return (
 		<Wrapper>
-			{" "}
 			<Content>
 				<Chart>
 					<div>
@@ -21,7 +44,7 @@ const Porfolio = ({ thirdWebTokens, sanityTokens, walletAddress }) => {
 							<BalanceTitle>Portfolio balance</BalanceTitle>
 							<BalanceValue>
 								{"$"}
-								{/* {walletBalance.toLocaleString("US")} */}
+								{walletBalance.toLocaleString("US")}
 							</BalanceValue>
 						</Balance>
 					</div>
@@ -29,7 +52,7 @@ const Porfolio = ({ thirdWebTokens, sanityTokens, walletAddress }) => {
 				</Chart>
 				<PortfolioTable>
 					<TableItem>
-						<Title>Your Web3 Assets</Title>
+						<Title>Your Assets</Title>
 					</TableItem>
 					<Divider />
 					<Table>

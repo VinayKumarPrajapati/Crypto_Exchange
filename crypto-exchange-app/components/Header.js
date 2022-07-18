@@ -1,11 +1,33 @@
-import React from "react";
 import styled from "styled-components";
+import Modal from "react-modal";
+import { useRouter } from "next/router";
+import TransferModal from "./modal/TransferModal";
 import Link from "next/link";
 
-const Header = ({ walletAddress, connectWallet }) => {
+Modal.setAppElement("#__next");
+
+const Header = ({ twTokens, sanityTokens, walletAddress, connectWallet }) => {
+	const router = useRouter();
+
+	const customStyles = {
+		content: {
+			top: "50%",
+			left: "50%",
+			right: "auto",
+			bottom: "auto",
+			transform: "translate(-50%, -50%)",
+			backgroundColor: "#0a0b0d",
+			padding: 0,
+			border: "none",
+		},
+		overlay: {
+			backgroundColor: "rgba(10, 11, 13, 0.75)",
+		},
+	};
+
 	return (
 		<Wrapper>
-			<Title>Web3 Assets</Title>
+			<Title>Assets</Title>
 			<ButtonsContainer>
 				{walletAddress ? (
 					<WalletLink>
@@ -19,14 +41,26 @@ const Header = ({ walletAddress, connectWallet }) => {
 						Connect Wallet
 					</Button>
 				)}
-
 				<Button style={{ backgroundColor: "#3773f5", color: "#000" }}>
 					Buy / Sell
 				</Button>
-				<Link href="">
+				<Link href={"/?transfer=1"}>
 					<Button>Send / Receive</Button>
 				</Link>
 			</ButtonsContainer>
+			<Separator />
+			<ProfileIcon />
+
+			<Modal
+				isOpen={!!router.query.transfer}
+				onRequestClose={() => router.push("/")}
+				style={customStyles}>
+				<TransferModal
+					twTokens={twTokens}
+					sanityTokens={sanityTokens}
+					walletAddress={walletAddress}
+				/>
+			</Modal>
 		</Wrapper>
 	);
 };
@@ -40,6 +74,15 @@ const Wrapper = styled.div`
 	border-bottom: 1px solid #282b2f;
 	display: flex;
 	align-items: center;
+`;
+const Title = styled.div`
+	font-size: 2rem;
+	font-weight: 600;
+	flex: 1;
+`;
+
+const ButtonsContainer = styled.div`
+	display: flex;
 `;
 
 const WalletLink = styled.div`
@@ -66,10 +109,6 @@ const WalletAddress = styled.div`
 	/* color: #8a919e; */
 `;
 
-const ButtonsContainer = styled.div`
-	display: flex;
-`;
-
 const Button = styled.div`
 	border: 1px solid #282b2f;
 	padding: 0.8rem;
@@ -82,8 +121,6 @@ const Button = styled.div`
 	}
 `;
 
-const Title = styled.div`
-	font-size: 2rem;
-	font-weight: 600;
-	flex: 1;
-`;
+const Separator = styled.div``;
+
+const ProfileIcon = styled.div``;
